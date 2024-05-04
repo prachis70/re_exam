@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: '/home',
       routes: {
-      '/':  (context) => Homepage(),
-        '/home':(context) =>Detailspage(),
+      '/home':  (context) => Homepage(),
+        '/det':(context) =>Detailspage(),
         '/cart':(context) => Cartpage(),
         'ck':(context) => Chekout(),
     }

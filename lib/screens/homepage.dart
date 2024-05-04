@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,67 +17,73 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Homepage', style: TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),),
+        title: Text(
+          'Homepage',
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+        ),
         leading: Icon(Icons.menu),
       ),
-      body: Row(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GestureDetector(onTap: () {
-                setState(() {
-                  selectedindex=index;
-                  Navigator.of(context).pushNamed('/home');
-                });
-              }, child: Container(
-                  height: 200,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    image:  DecorationImage(
-                      fit: BoxFit.cover,
-                      image:  AssetImage('assets/imgs/p1.jpg'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(30),
+              height: 200,
+              width: 380,
+              decoration: BoxDecoration(color: Colors.grey,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [BoxShadow(
+                  color: Colors.black,blurRadius: 5,
+                  spreadRadius: 4,
+                )],
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('assets/imgs/p1.jpg'),
+                )
+              ),
+            ),
+            Wrap(
+              direction: Axis.horizontal,
+              children: [
+                ...List.generate(
+                  pro.length,
+                  (index) => GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        selectedindex=index;
+                        Navigator.of(context).pushNamed('/det');
+                      });
+                    },
+                    child: box1(
+                      img: pro[index]['img'],
+                       name: pro[index]['name'], price: pro[index]['price'].toInt(),
                     ),
-                    color: Colors.cyan,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.black),
-                
-                
                   ),
                 ),
-              ),
-              Container(
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-                height: 200,
-                width: 400,
-                decoration: BoxDecoration(
-                  image:  DecorationImage(
-                    fit: BoxFit.cover,
-                    image:  AssetImage('assets/imgs/p2.jpg'),
-                  ),
-                  color: Colors.cyan,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
-                ),
-              ),
-              Container(
-                height: 200,
-                width: 400,
-                decoration: BoxDecoration(
-                  image:  DecorationImage(
-                    fit: BoxFit.cover,
-                    image:  AssetImage('assets/imgs/p3.jpg'),
-                  ),
-                  color: Colors.cyan,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
-
-                ),
-              ),
-            ],
-          ),
+  Container box1({required String img,required int price,required String name }) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      height: 180,
+      width: 180,
+      decoration: BoxDecoration(
+        boxShadow: [
+           BoxShadow( color: Colors.black),
         ],
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(img),
+        ),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.black),
       ),
     );
   }

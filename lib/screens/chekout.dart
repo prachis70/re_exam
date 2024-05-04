@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Chekout extends StatefulWidget {
   const Chekout({super.key});
@@ -19,6 +20,7 @@ class _ChekoutState extends State<Chekout> {
       body: Column(
         children: [
         Container(
+        padding: EdgeInsets.only(top: 30),
           height: 200,
           width: 200,
           decoration: BoxDecoration(

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:re_exam/utils/list.dart';
 
 class Detailspage extends StatefulWidget {
   const Detailspage({super.key});
@@ -26,9 +27,10 @@ class _DetailspageState extends State<Detailspage> {
               decoration: BoxDecoration(color: Colors.cyan,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                 image: AssetImage('assets/imgs/p1.jpg')
+                 image: AssetImage(pro[selectedindex]['img']),
               ),
               borderRadius: BorderRadius.circular(20),
+
               border: Border .all(color: Colors.black)),
             ),
           ),
@@ -46,7 +48,8 @@ class _DetailspageState extends State<Detailspage> {
             ,
          ),
            InkWell(onTap: () {
-             Navigator.of(context).pushNamed('/cart');
+             cartlist.add(pro[selectedindex]);
+             Navigator.pushNamed(context, '/cart');
            },
              child: Container(
                margin: EdgeInsets.all(80),
